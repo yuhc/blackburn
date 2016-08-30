@@ -10,8 +10,15 @@
     {{ .Render "summary"}}
   {{ end }}
 
-  {{ partial "pagination.html" . }}
+  {{ range .Data.Pages }}
+    {{if eq .Type "index" }} 
+      {{.Content}}
+    {{end}}
+  {{ end }}
 
+  {{ .Render "about"}}
+
+  {{ partial "pagination.html" . }}
 </div>
 
 {{ partial "footer.html" . }}
